@@ -7,6 +7,7 @@ import com.devjudge.entity.User;
 import com.devjudge.repository.UserRepository;
 import com.devjudge.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ import java.util.Optional;
 
 // CodeRabbit test review comment
 
-
+@Profile("db")
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin
