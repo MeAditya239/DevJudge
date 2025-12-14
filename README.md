@@ -1,61 +1,129 @@
 🧑‍⚖️ DevJudge — Online Code Practice & Evaluation Platform
 
-DevJudge is a backend-driven online coding practice and evaluation platform designed for trainers and students.
-It enables trainers to create coding problems and students to practice and submit solutions in a structured, scalable way.
+DevJudge is a full-stack online code practice and evaluation platform inspired by tools like HackerRank and LeetCode.
+It allows users to write, run, and evaluate Java code in real time through a clean web interface backed by a secure, scalable backend.
 
-This project was built as part of an online hackathon and follows industry-level development practices, including pull-request-based workflows and AI-assisted code reviews.
+This project was built end-to-end during a hackathon, following industry-grade workflows, AI-assisted code reviews, and cloud deployments.
+
+
+🌐 Live Demo
+--------------------------------------------------------------
+Frontend (Vercel)
+👉 https://devjudge-frontend.vercel.app/
+
+Backend (Render)
+👉 https://devjudge-backend.onrender.com
+
+🎯 Problem Statement
+-----------------------------------------------------------------------------
+Learning to code requires instant feedback, safe execution, and clear results.
+DevJudge solves this by providing:
+
+A browser-based code editor
+
+Secure backend code execution
+
+Real-time output & error reporting
+
+A foundation for future contests, leaderboards, and problem management
 
 🚀 Key Features (Current & Planned)
 ----------------------------------------------------------------
-✅ Implemented
+<img width="674" height="642" alt="image" src="https://github.com/user-attachments/assets/4e71a27b-13b0-4bf9-9d1d-e1f4d6d3ce34" />
 
-User authentication (Register & Login)
 
-JWT-based security
+🔜 Planned / Extensible Features
 
-Role-based access (Trainer / Student)
+Coding problem CRUD (Trainer)
 
-Coding Problem domain model
+Problem listing & filtering (Student)
 
-Clean REST API structure
+Test / Contest creation
 
-PR-based development workflow with AI reviews
+Code submissions & verdicts
 
-🔜 Planned
+Leaderboards & analytics
 
-CRUD for coding problems (Trainer)
-
-Problem listing (Student)
-
-Test/Contest creation
-
-Code submission & evaluation
-
-Leaderboard & results
+Multi-language support
 
 🛠 Tech Stack
 ----------------------------------------------------------------
 Backend
+---------
 
 Java 17
 
 Spring Boot
 
-Spring Security + JWT
+Spring Security
 
-Spring Data JPA
-
-MySQL (configurable)
+JWT Authentication
 
 Maven
 
+REST APIs
+
+Docker
+
+Render (Deployment)
+
+Frontend
+---------------------------------------
+
+React (Vite)
+
+JavaScript
+
+Fetch API
+
+Vercel (Deployment)
+
 Dev & Tooling
+-----------------------
 
 IntelliJ IDEA
 
 Git & GitHub
 
-Postman (API testing)
+Postman
+
+AI-assisted PR reviews
+
+
+🧠 Code Execution Flow (Judge Engine)
+-------------------------------------------------
+
+User writes Java code in browser
+
+Frontend sends code → /api/judge/run
+
+Backend:
+
+Writes code to temp file
+
+Compiles using javac
+
+Executes safely
+
+Captures output / errors
+
+Result is returned to frontend
+
+User sees output instantly
+
+
+
+🔐 Authentication Flow
+----------------------------------
+User registers with role
+
+Password is hashed using BCrypt
+
+Login returns JWT token
+
+Token can be used for secured APIs (future expansion)
+
+
 
 🤖 Code Quality & AI-Assisted Reviews (CodeRabbit)
 ----------------------------------------------------------------
@@ -89,7 +157,8 @@ Professional development workflow
 
 📂 Project Structure (Backend)
 ----------------------------------------------------------------
-<img width="576" height="249" alt="image" src="https://github.com/user-attachments/assets/9ca555d1-8eab-458b-a5e9-5a9aa0194011" />
+<img width="335" height="252" alt="image" src="https://github.com/user-attachments/assets/06faa5d1-d14d-4f3a-93b1-5c981c63d0d2" />
+
 
 
 
@@ -116,9 +185,7 @@ POST /api/auth/register
 
 POST /api/auth/login
 
-GET  /api/problems        (placeholder)
-
-POST /api/problems        (placeholder)
+POST /api/judge/run
 
 🌍 Deployment (Planned)
 ----------------------------------------------
@@ -142,4 +209,6 @@ Project is open-source and extensible
 ----------------------------------------------
 Aditya Patil
 
-Backend Developer | Java & Spring Boot
+Backend & Full-Stack Developer
+
+Java • Spring Boot • React • Cloud Deployment
