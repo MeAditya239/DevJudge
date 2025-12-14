@@ -32,6 +32,7 @@ public class SecurityConfig {
 
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",   // Vite dev
+                "http://localhost:5174",   //Vite dev (extra port for safe side)
                 "http://localhost:3000",   // React (optional)
                 "https://devjudge-frontend.vercel.app" // future Vercel
         ));
