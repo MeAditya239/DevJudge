@@ -1,17 +1,31 @@
-# Use Java 17 (required for Spring Boot 3)
-FROM eclipse-temurin:17-jdk
+# ---------- BUILD STAGE ----------
+FROM maven:3.9.9-eclipse-temurin-17 AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy project files
-COPY . .
+# Copy pom.xml first (better caching)
+COPY pom.xml .
+
+# Download dependencies
+RUN mvn dependency:go-offline
+
+# Copy the rest of the source
+COPY src ./src
 
 # Build the application
-RUN ./mvnw clean package -DskipTests || mvn clean package -DskipTests
+RUN mvn clean package -DskipTests
 
-# Expose port
+
+# ---------- RUNTIME STAGE ----------
+FROM eclipse-temurin:17-jdk
+
+WORKDIR /app
+
+# Copy jar from build stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Expose port (Render uses $PORT internally)
 EXPOSE 8080
 
-# Run the Spring Boot app
-CMD ["sh", "-c", "java -jar target/*.jar"]
+# Run the app
+CMD ["sh", "-c", "java -jar app.jar"]
